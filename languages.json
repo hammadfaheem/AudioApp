@@ -1,0 +1,122 @@
+{
+    "English": {
+        "assemblyai": "en",
+        "google_cloud": "en-US"
+    },
+    "Spanish": {
+        "assemblyai": "es",
+        "google_cloud": "es-ES"
+    },
+    "French": {
+        "assemblyai": "fr",
+        "google_cloud": "fr-FR"
+    },
+    "German": {
+        "assemblyai": "de",
+        "google_cloud": "de-DE"
+    },
+    "Italian": {
+        "assemblyai": "it",
+        "google_cloud": "it-IT"
+    },
+    "Portuguese": {
+        "assemblyai": "pt",
+        "google_cloud": "pt-BR"
+    },
+    "Dutch": {
+        "assemblyai": "nl",
+        "google_cloud": "nl-BE"
+    },
+    "Russian": {
+        "assemblyai": "ru",
+        "google_cloud": "ru-RU"
+    },
+    "Japanese": {
+        "assemblyai": "ja",
+        "google_cloud": "ja-JP"
+    },
+    "Korean": {
+        "assemblyai": "ko",
+        "google_cloud": "ko-KR"
+    },
+    "Arabic": {
+        "assemblyai": "ar",
+        "google_cloud": "ar-XA"
+    },
+    "Hindi": {
+        "assemblyai": "hi",
+        "google_cloud": "hi-IN"
+    },
+    "Turkish": {
+        "assemblyai": "tr",
+        "google_cloud": "tr-TR"
+    },
+    "Polish": {
+        "assemblyai": "pl",
+        "google_cloud": "pl-PL"
+    },
+    "Swedish": {
+        "assemblyai": "sv",
+        "google_cloud": "sv-SE"
+    },
+    "Vietnamese": {
+        "assemblyai": "vi",
+        "google_cloud": "vi-VN"
+    },
+    "Indonesian": {
+        "assemblyai": "id",
+        "google_cloud": "id-ID"
+    },
+    "Ukrainian": {
+        "assemblyai": "uk",
+        "google_cloud": "uk-UA"
+    },
+    "Hebrew": {
+        "assemblyai": "he",
+        "google_cloud": "he-IL"
+    },
+    "Malay": {
+        "assemblyai": "ms",
+        "google_cloud": "ms-MY"
+    },
+    "Filipino": {
+        "assemblyai": "fil",
+        "google_cloud": "fil-PH"
+    },
+    "Thai": {
+        "assemblyai": "th",
+        "google_cloud": "th-TH"
+    },
+    "Danish": {
+        "assemblyai": "da",
+        "google_cloud": "da-DK"
+    },
+    "Finnish": {
+        "assemblyai": "fi",
+        "google_cloud": "fi-FI"
+    },
+    "Hungarian": {
+        "assemblyai": "hu",
+        "google_cloud": "hu-HU"
+    },
+    "Romanian": {
+        "assemblyai": "ro",
+        "google_cloud": "ro-RO"
+    },
+    "Czech": {
+        "assemblyai": "cs",
+        "google_cloud": "cs-CZ"
+    },
+    "Greek": {
+        "assemblyai": "el",
+        "google_cloud": "el-GR"
+    },
+    "Bulgarian": {
+        "assemblyai": "bg",
+        "google_cloud": "bg-BG"
+    },
+    "Catalan": {
+        "assemblyai": "ca",
+        "google_cloud": "ca-ES"
+    }
+}

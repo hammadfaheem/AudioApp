@@ -1,0 +1,8 @@
+uvicorn
+fastapi
+assemblyai
+elevenlabs
+dotenv
+openai
+python-multipart
+requests
