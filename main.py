@@ -175,3 +175,5 @@ async def text_to_speech(text: str = Form(...), language: str = Form(...), audio
         raise HTTPException(status_code=500, detail=f"Text-to-Speech failed: {str(e)}")
 
 # ✅ Ready for deployment on Vercel, V0, or any cloud platform!
+from mangum import Mangum
+handler = Mangum(app)

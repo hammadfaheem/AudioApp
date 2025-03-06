@@ -6,3 +6,4 @@ dotenv
 openai
 python-multipart
 requests
+mangum
