@@ -60,8 +60,8 @@ os.makedirs("audio", exist_ok=True)
 os.makedirs("tts_audio", exist_ok=True)
 
 # 🎤 Home
-@app.post("/")
-async def home():
+@app.get("/")
+async def root():
     return {"message": "Welcome to the Translation API!"}
 
 # 🎤 Speech-to-Text using AssemblyAI (Now accepts a language parameter)
