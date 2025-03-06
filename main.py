@@ -1,53 +1,3 @@
-# from fastapi import FastAPI, File, UploadFile
-# from pydantic import BaseModel
-# # from googletrans import Translator
-# from gtts import gTTS
-# from fastapi.responses import JSONResponse
-# import os
-# import shutil
-
-# app = FastAPI()
-
-# # Ensure the audio directory exists
-# audio_folder = "audio_files"
-# if not os.path.exists(audio_folder):
-#     os.makedirs(audio_folder)
-
-# # Class to handle the translation request
-# class TranslationRequest(BaseModel):
-#     text: str
-#     source_lang: str
-#     target_lang: str
-
-# @app.post("/translate_audio")
-# async def translate_audio(request: TranslationRequest):
-#     try:
-#         # Here, you would transcribe the audio file (e.g., using Google Cloud Speech-to-Text)
-#         # For now, we'll simulate a translation of the transcribed text
-#         transcription = request.text  # In this case, the frontend sends text as transcription
-
-#         # Translate the transcription
-#         translator = Translator()
-#         translated = translator.translate(transcription, src=request.source_lang, dest=request.target_lang)
-#         translated_text = translated.text
-
-#         # Generate audio from the translated text
-#         tts = gTTS(translated_text, lang=request.target_lang)
-#         translated_audio_path = f"{audio_folder}/translated_audio.mp3"
-#         tts.save(translated_audio_path)
-
-#         # Return translated text and audio URL
-#         audio_url = f"/static/{translated_audio_path.split('/')[-1]}"
-#         return JSONResponse(content={"translated_text": translated_text, "audio_url": audio_url})
-
-#     except Exception as e:
-#         return JSONResponse(content={"message": f"Error: {str(e)}"}, status_code=500)
-
-# # Serve static files (audio)
-# from fastapi.staticfiles import StaticFiles
-# app.mount("/static", StaticFiles(directory=audio_folder), name="static")
-
-
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import StreamingResponse
 import assemblyai as aai
@@ -108,6 +58,11 @@ translate_agent = TranslateAgent()
 # Create directories for temporary audio storage
 os.makedirs("audio", exist_ok=True)
 os.makedirs("tts_audio", exist_ok=True)
+
+# 🎤 Home
+@app.post("/")
+async def home():
+    return {"message": "Welcome to the Translation API!"}
 
 # 🎤 Speech-to-Text using AssemblyAI (Now accepts a language parameter)
 @app.post("/transcribe")
