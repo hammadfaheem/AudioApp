@@ -35,7 +35,7 @@ app = FastAPI()
 #     "Urdu": "ur"
 # }
 
-language_codes = json.load(open("/home/hammad/Project/translation_app/backend/languages.json"))
+language_codes = json.load(open("languages.json"))
 
 # Initialize FastAPI app
 app = FastAPI()
