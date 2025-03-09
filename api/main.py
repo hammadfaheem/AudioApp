@@ -56,9 +56,9 @@ aai.settings.api_key = os.getenv("ASSEMBLYAI_API_KEY")
 GOOGLE_API_KEY = os.getenv("GOOGLE_CLOUD_API")  # Replace with your API key
 translate_agent = TranslateAgent()
 
-# Create directories for temporary audio storage
-os.makedirs("audio", exist_ok=True)
-os.makedirs("tts_audio", exist_ok=True)
+# # Create directories for temporary audio storage
+# os.makedirs("audio", exist_ok=True)
+# os.makedirs("tts_audio", exist_ok=True)
 
 # 🎤 Home
 @app.get("/")
@@ -70,7 +70,9 @@ async def root():
 async def transcribe(audio: UploadFile = File(...), language: str = Form(...)):
     try:
         file_id = str(uuid.uuid4())
-        file_path = f"audio/{file_id}.wav"
+        # file_path = f"audio/{file_id}.wav"
+        file_path = f"/tmp/{file_id}.wav"  # ✅ Works on Vercel
+
 
         # Save uploaded file
         with open(file_path, "wb") as buffer:
@@ -85,7 +87,13 @@ async def transcribe(audio: UploadFile = File(...), language: str = Form(...)):
         transcript = transcriber.transcribe(file_path)
 
         # Cleanup: Delete file after transcription
-        os.remove(file_path)
+        # os.remove(file_path)
+        # Check if file exists before deleting
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print(f"Deleted: {file_path}")
+        else:
+            print("File does not exist")
 
         return {"transcription": transcript.text}
 
@@ -139,7 +147,9 @@ async def translate(text: str = Form(...), input_language: str = Form(...), targ
 async def text_to_speech(text: str = Form(...), language: str = Form(...), audio_encoding: str = Form("MP3")):
     try:
         file_id = str(uuid.uuid4())
-        file_path = f"tts_audio/{file_id}.{audio_encoding.lower()}"
+        # file_path = f"tts_audio/{file_id}.{audio_encoding.lower()}"
+        file_path = f"/tmp/{file_id}.mp3"
+
 
         url = f"https://texttospeech.googleapis.com/v1/text:synthesize?key={GOOGLE_API_KEY}"
         language_code = language_codes.get(language, {}).get("google_cloud")
