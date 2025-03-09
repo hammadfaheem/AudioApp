@@ -102,8 +102,7 @@ async def translate(text: str = Form(...), input_language: str = Form(...), targ
         translated_text = translated_text["translated_text"]
         return {"translated_text": translated_text}
     except Exception as e:
-# 🛠 Wrap FastAPI with Mangum for Vercel support
-handler = Mangum(app)
+
         raise HTTPException(status_code=500, detail=f"Translation failed: {str(e)}")
 
 # # 🔊 Text-to-Speech using ElevenLabs
