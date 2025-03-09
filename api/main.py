@@ -16,6 +16,7 @@ import io
 import base64
 import requests
 load_dotenv()
+from mangum import Mangum  # 🛠 Needed for Vercel
 
 
 app = FastAPI()
@@ -65,7 +66,7 @@ async def root():
     return {"message": "Welcome to the Translation API!"}
 
 # 🎤 Speech-to-Text using AssemblyAI (Now accepts a language parameter)
-@app.post("/transcribe")
+@app.post("/transcribe/")
 async def transcribe(audio: UploadFile = File(...), language: str = Form(...)):
     try:
         file_id = str(uuid.uuid4())
@@ -92,7 +93,7 @@ async def transcribe(audio: UploadFile = File(...), language: str = Form(...)):
         raise HTTPException(status_code=500, detail=f"Transcription failed: {str(e)}")
 
 # 🌍 Text Translation (Placeholder function - can integrate DeepL, Google Translate, etc.)
-@app.post("/translate")
+@app.post("/translate/")
 async def translate(text: str = Form(...), input_language: str = Form(...), target_language: str = Form(...)):
     try:
         # Use a translation API or AI model
@@ -101,6 +102,8 @@ async def translate(text: str = Form(...), input_language: str = Form(...), targ
         translated_text = translated_text["translated_text"]
         return {"translated_text": translated_text}
     except Exception as e:
+# 🛠 Wrap FastAPI with Mangum for Vercel support
+handler = Mangum(app)
         raise HTTPException(status_code=500, detail=f"Translation failed: {str(e)}")
 
 # # 🔊 Text-to-Speech using ElevenLabs
@@ -133,7 +136,7 @@ async def translate(text: str = Form(...), input_language: str = Form(...), targ
 
 
 
-@app.post("/text-to-speech")
+@app.post("/text-to-speech/")
 async def text_to_speech(text: str = Form(...), language: str = Form(...), audio_encoding: str = Form("MP3")):
     try:
         file_id = str(uuid.uuid4())
@@ -175,3 +178,8 @@ async def text_to_speech(text: str = Form(...), language: str = Form(...), audio
         raise HTTPException(status_code=500, detail=f"Text-to-Speech failed: {str(e)}")
 
 # ✅ Ready for deployment on Vercel, V0, or any cloud platform!
+
+
+
+# 🛠 Wrap FastAPI with Mangum for Vercel support
+handler = Mangum(app)
